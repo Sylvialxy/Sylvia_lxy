@@ -1,0 +1,22 @@
+<!-- bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_today"
+        android:title="Today"
+        android:icon="@drawable/ic_today" />
+
+    <item
+        android:id="@+id/nav_clock"
+        android:title="Clock"
+        android:icon="@drawable/ic_clock" />
+
+    <item
+        android:id="@+id/nav_history"
+        android:title="History"
+        android:icon="@drawable/ic_history" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings" />
+</menu>
