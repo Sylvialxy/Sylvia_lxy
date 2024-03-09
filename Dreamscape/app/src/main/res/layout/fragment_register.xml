@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Profile"
+        android:text="Register"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -39,7 +39,7 @@
 
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/etUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -62,11 +62,11 @@
 
 
         <TextView
-            android:id="@+id/user_password"
+            android:id="@+id/etPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="User Password"
+            android:text="User password"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnRegister"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
@@ -83,19 +83,18 @@
         android:background="@color/black"
         android:backgroundTint="@color/dark_blue"
         android:elevation="20dp"
-        android:text="Login"
+        android:text="Sign up"
         android:textSize="18sp"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/tvErrorMessage"
+        android:id="@+id/tvError"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:textColor="@color/white"
         >
-
     </TextView>
 
 

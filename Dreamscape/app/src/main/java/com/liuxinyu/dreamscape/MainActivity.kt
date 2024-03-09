@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupBottomNavigationView()
+        navController.navigate(R.id.homeFragment)
         navigateToToday()
     }
 

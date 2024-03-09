@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.liuxinyu.dreamscape.R
 import com.liuxinyu.dreamscape.databinding.FragmentHomeBinding
+import androidx.navigation.fragment.findNavController
+
 
 class HomeFragment : Fragment() {
 
@@ -17,17 +19,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        // 设置按钮点击事件
+        binding.btnSignIn.setOnClickListener {
+            // 使用 Navigation 组件导航到 LoginFragment
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLoginFragment())
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // 设置页面内容，包括标题、字体颜色等
-        binding.btnSignIn.setOnClickListener {
-            // 处理登录按钮点击事件
-            // 使用 Navigation 组件进行页面导航到登录页面
-            findNavController().navigate(R.id.fragment_login)
-        }
-    }
+    // 其他相关操作...
 }
