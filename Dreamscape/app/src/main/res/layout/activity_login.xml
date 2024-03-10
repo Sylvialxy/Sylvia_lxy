@@ -84,7 +84,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:background="@color/black"
-        android:backgroundTint="@color/dark_blue"
+        android:backgroundTint="@color/purple_500"
         android:elevation="20dp"
         android:text="Login"
         android:textSize="18sp"
