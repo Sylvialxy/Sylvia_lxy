@@ -1,54 +1,126 @@
-<!-- fragment_today.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000000">
+    android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/tvSleepTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/dark_blue"
-        android:textSize="24sp"
-        android:text="Sleep Time"
-        android:layout_marginTop="16dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/tvSleepDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:text="Sleep Duration"
-        android:layout_below="@id/tvSleepTime"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/tvSleepEfficiency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:text="Sleep Efficiency"
-        android:layout_below="@id/tvSleepDuration"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"/>
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/tvSleepEfficiency"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/barChart"
-        android:layout_marginTop="16dp"/>
+        <!-- 其他视图，包括最上面的大模块、中间模块、最后模块等 -->
+        <!-- 上部模块 -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#CCCCCC"
+            android:padding="10dp">
 
-</RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvSleepTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Sleep Time"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvSleepDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSleepTime"
+                android:layout_marginTop="8dp"
+                android:text="Sleep Duration"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvSleepEfficiency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvSleepDuration"
+                android:layout_marginTop="8dp"
+                android:text="Sleep Efficiency"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <!-- 中间模块 - 睡眠脑电波 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <!-- 在这里添加睡眠脑电波的相关视图，可以使用图表库或自定义绘制，具体根据你的需求来实现 -->
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barChart"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/tvSleepEfficiency"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+        <!-- 最后模块 - 卡片式睡眠指标环形图 -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <!-- 在这里添加卡片式睡眠指标环形图的相关视图，可以使用图表库或自定义绘制，具体根据你的需求来实现 -->
+
+            <!-- 示例：卡片1 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:background="#E1E1E1"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indicator 1"
+                    android:textSize="16sp" />
+
+                <!-- 在这里添加环形图或其他相关视图 -->
+
+            </LinearLayout>
+
+            <!-- 示例：卡片2 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:background="#E1E1E1"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indicator 2"
+                    android:textSize="16sp" />
+
+                <!-- 在这里添加环形图或其他相关视图 -->
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/barChart"
+                    android:layout_marginTop="16dp"/>
+
+            </LinearLayout>
+
+            <!-- 添加更多卡片... -->
+
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>
