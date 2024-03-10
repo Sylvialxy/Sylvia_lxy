@@ -27,19 +27,19 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvSleepDuration"
+                android:id="@+id/tvSleepDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvSleepTime"
                 android:layout_marginTop="8dp"
-                android:text="Sleep Duration"
+                android:text="Sleep Date"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvSleepEfficiency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvSleepDuration"
+                android:layout_below="@id/tvSleepDate"
                 android:layout_marginTop="8dp"
                 android:text="Sleep Efficiency"
                 android:textSize="18sp" />
@@ -60,6 +60,8 @@
                 android:layout_height="200dp"
                 android:layout_below="@id/tvSleepEfficiency"
                 android:layout_marginTop="16dp"/>
+
+
 
         </LinearLayout>
 

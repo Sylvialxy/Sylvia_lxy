@@ -20,7 +20,7 @@ class TodayFragment : Fragment() {
     private val sleepRepository = SleepRepository()
 
     private lateinit var tvSleepTime: TextView
-    private lateinit var tvSleepDuration: TextView
+    private lateinit var tvSleepDate: TextView
     private lateinit var tvSleepEfficiency: TextView
     private lateinit var barChart: BarChart
     private lateinit var pieChart: PieChart
@@ -36,7 +36,7 @@ class TodayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvSleepTime = view.findViewById(R.id.tvSleepTime)
-        tvSleepDuration = view.findViewById(R.id.tvSleepDuration)
+        tvSleepDate = view.findViewById(R.id.tvSleepDate)
         tvSleepEfficiency = view.findViewById(R.id.tvSleepEfficiency)
         barChart = view.findViewById(R.id.barChart)
         pieChart = view.findViewById(R.id.pieChart)
@@ -54,7 +54,7 @@ class TodayFragment : Fragment() {
 
     private fun updateUI(sleepData: SleepData) {
         tvSleepTime.text = sleepData.sleepTime
-        tvSleepDuration.text = sleepData.sleepDuration.toString()
+        tvSleepDate.text = sleepData.date.toString()
         tvSleepEfficiency.text = sleepData.sleepEfficiency.toString()
 
         drawBarChart(sleepData)
