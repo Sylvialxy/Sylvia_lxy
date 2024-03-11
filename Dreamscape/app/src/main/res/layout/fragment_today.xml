@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#CCCCCC"
+            android:background="@color/black"
             android:padding="10dp">
 
 
@@ -24,24 +24,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:text="Sleep Time"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvSleepDate"
+                android:id="@+id/tvSleepDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvSleepTime"
                 android:layout_marginTop="8dp"
-                android:text="Sleep Date"
+                android:text="Sleep Duration"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvSleepEfficiency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvSleepDate"
+                android:layout_below="@id/tvSleepDuration"
                 android:layout_marginTop="8dp"
                 android:text="Sleep Efficiency"
+                android:textColor="@color/white"
                 android:textSize="18sp" />
 
         </RelativeLayout>
@@ -51,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="horizontal"
+            android:background="@color/black"
             android:padding="16dp">
 
             <!-- 在这里添加睡眠脑电波的相关视图，可以使用图表库或自定义绘制，具体根据你的需求来实现 -->
@@ -61,14 +65,14 @@
                 android:layout_below="@id/tvSleepEfficiency"
                 android:layout_marginTop="16dp"/>
 
-
-
         </LinearLayout>
 
         <!-- 最后模块 - 卡片式睡眠指标环形图 -->
         <GridLayout
+            android:id="@+id/gridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             android:columnCount="2"
             android:orientation="horizontal"
             android:padding="16dp">
@@ -80,18 +84,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:background="#E1E1E1"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Indicator 1"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_horizontal" />
 
-                <!-- 在这里添加环形图或其他相关视图 -->
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
 
             </LinearLayout>
 
@@ -100,27 +107,69 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:background="#E1E1E1"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Indicator 2"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_horizontal" />
 
-                <!-- 在这里添加环形图或其他相关视图 -->
                 <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
+                    android:id="@+id/pieChart2"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/barChart"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_height="200dp" />
 
             </LinearLayout>
 
+            <!-- 示例：卡片3 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Indicator 3"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_horizontal" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart3"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
+
+            <!-- 示例：卡片4 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Indicator 4"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center_horizontal" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart4"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout>
             <!-- 添加更多卡片... -->
 
         </GridLayout>
