@@ -1,65 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
 
-    <!-- 顶部年份月份显示和切换 -->
-    <LinearLayout
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:text="当前年份月份"
+        android:textSize="18sp" />
 
-        <!-- 上一月按钮 -->
-        <Button
-            android:id="@+id/btnPreviousMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Previous Month" />
-
-        <!-- 年份月份显示 -->
-        <TextView
-            android:id="@+id/tvYearMonth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2024年3月"
-            android:textSize="18sp"
-            android:gravity="center" />
-
-        <!-- 下一月按钮 -->
-        <Button
-            android:id="@+id/btnNextMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Next Month" />
-    </LinearLayout>
-
-    <!-- 柱状图和日期切换的 ViewPager -->
+    <!-- ViewPager2 用于左右滑动 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <!-- 日期滚动视图 -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="24"
+        android:thumb="@android:drawable/ic_media_pause"
+        android:padding="16dp"/>
+
+    <!-- 下方模块整个页面可以上下滚动 -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/seekBar">
 
-
-        <!-- 日历视图 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewCalendar"
+        <!-- 以日历的形式记录每天的睡眠情况 -->
+        <CalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:nestedScrollingEnabled="false" />
+            android:layout_height="wrap_content" />
 
+        <!-- 点击日历日期可跳转当天详细的睡眠情况 -->
+        <!-- 在这里添加具体的睡眠情况布局，可以使用 RecyclerView 或其他方式展示 -->
 
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

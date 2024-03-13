@@ -2,6 +2,7 @@ package com.liuxinyu.dreamscape.data.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.liuxinyu.dreamscape.data.model.HistoryData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,14 +29,14 @@ class SleepRepository {
 
     fun getRealtimeData(callback: (SleepData?) -> Unit) {
         sleepApiService.getRealtimeData().enqueue(object : Callback<SleepData> {
-            /*override fun onResponse(call: Call<SleepData>, response: Response<SleepData>) {
+            override fun onResponse(call: Call<SleepData>, response: Response<SleepData>) {
                 callback(response.body())
             }
 
             override fun onFailure(call: Call<SleepData>, t: Throwable) {
                 callback(null)
-            }*/
-            override fun onResponse(call: Call<SleepData>, response: Response<SleepData>) {
+            }
+            /*override fun onResponse(call: Call<SleepData>, response: Response<SleepData>) {
                 if (response.isSuccessful) {
                     val sleepData = response.body()
                     Log.d("SleepData", "Received data from API: $sleepData")
@@ -51,19 +52,19 @@ class SleepRepository {
             override fun onFailure(call: Call<SleepData>, t: Throwable) {
                 Log.e("API Error", "API call failed", t)
                 callback(null)
-            }
+            }*/
 
 
         })
     }
 
-    fun getHistoryData(callback: (List<SleepData>?) -> Unit) {
-        sleepApiService.getHistoryData().enqueue(object : Callback<List<SleepData>> {
-            override fun onResponse(call: Call<List<SleepData>>, response: Response<List<SleepData>>) {
+    fun getHistoryData(callback: (List<HistoryData>?) -> Unit) {
+        sleepApiService.getHistoryData().enqueue(object : Callback<List<HistoryData>> {
+            override fun onResponse(call: Call<List<HistoryData>>, response: Response<List<HistoryData>>) {
                 callback(response.body())
             }
 
-            override fun onFailure(call: Call<List<SleepData>>, t: Throwable) {
+            override fun onFailure(call: Call<List<HistoryData>>, t: Throwable) {
                 callback(null)
             }
         })

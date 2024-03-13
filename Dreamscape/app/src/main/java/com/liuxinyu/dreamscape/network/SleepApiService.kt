@@ -1,5 +1,6 @@
 package com.liuxinyu.dreamscape.network
 
+import com.liuxinyu.dreamscape.data.model.HistoryData
 import com.liuxinyu.dreamscape.data.model.SleepData
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -15,7 +16,7 @@ interface SleepApiService {
     fun getRealtimeData(): Call<SleepData>
 
     @GET("history")
-    fun getHistoryData(): Call<List<SleepData>>
+    fun getHistoryData(): Call<List<HistoryData>>
 
     @POST("upload")
     fun uploadData(@Body sleepData: SleepData): Call<Unit>
