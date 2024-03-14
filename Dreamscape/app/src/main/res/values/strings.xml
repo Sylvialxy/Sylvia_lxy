@@ -14,4 +14,14 @@
 
     <string name="month_year_format">%d年%d月</string>
 
+    <string name="settings_title">Settings</string>
+    <string name="settings_icon_description">Settings Icon</string>
+    <string name="menu_item1">账号管理</string>
+    <string name="menu_item2">隐私设置</string>
+    <string name="menu_item3">设备控制</string>
+    <string name="menu_item4">更多</string>
+    <string name="menu_item5">帮助</string>
+    <string name="menu_item6">Menu Item 6</string>
+
+
 </resources>

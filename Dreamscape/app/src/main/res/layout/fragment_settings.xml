@@ -1,14 +1,245 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- fragment_settings.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingsFragment">
+    android:background="@color/black">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/titleLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:textColor="@color/white">
 
-</FrameLayout>
+        <!-- 标题图标 -->
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_settings"
+            android:contentDescription="@string/settings_icon_description"
+            android:textColor="@color/white"/>
+
+        <!-- 标题文本 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_title"
+            android:textSize="28sp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+    <!-- 菜单项 -->
+    <LinearLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleLayout"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+        <!-- 菜单项1 -->
+        <RelativeLayout
+            android:id="@+id/menuItem1"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem1Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item1"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem1Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item1"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem1Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+
+        <!-- 菜单项2 -->
+        <RelativeLayout
+            android:id="@+id/menuItem2"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem2Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item2"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem2Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item2"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem2Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+        <!-- 菜单项3 -->
+        <RelativeLayout
+            android:id="@+id/menuItem3"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem3Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item3"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem3Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item3"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem3Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <!-- 菜单项4 -->
+        <RelativeLayout
+            android:id="@+id/menuItem4"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem4Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item4"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem4Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item4"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem4Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <!-- 菜单项5 -->
+        <RelativeLayout
+            android:id="@+id/menuItem5"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem5Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item5"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem5Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item5"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem5Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <!-- 菜单项6 -->
+        <RelativeLayout
+            android:id="@+id/menuItem6"
+            style="@style/SettingsMenuItem">
+
+
+            <ImageView
+                android:id="@+id/menuItem6Icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_menu_item5"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:id="@+id/menuItem6Text"
+                style="@style/SettingsMenuItem"
+                android:text="@string/menu_item6"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/menuItem6Icon"
+                android:layout_centerVertical="true"/>
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
