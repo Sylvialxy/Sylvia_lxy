@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.slider.Slider
 import com.liuxinyu.dreamscape.R
@@ -32,49 +35,43 @@ class HistoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_history, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
+    }
 
-        viewPager = view.findViewById(R.id.viewPager)
-        seekBar = view.findViewById(R.id.seekBar)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            // Fetch history data from the repository
-            val historyDataList = withContext(Dispatchers.IO) {
-                suspendCancellableCoroutine<List<HistoryData>?> { continuation ->
-                    sleepRepository.getHistoryData { historyDataList ->
-                        continuation.resume(historyDataList) {
-                            // 如果需要处理取消操作，可以在这里添加相应的逻辑
-                        }
-                    }
-                }
+        // 初始化 RecyclerView
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = SleepDurationAdapter(getSampleData())
+
+        // 初始化 SeekBar
+        val seekBar = view.findViewById<SeekBar>(R.id.seekBar)
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // 在此处理 SeekBar 进度变化的逻辑，例如滚动 RecyclerView 到相应位置
+                // 你可能需要根据进度计算 RecyclerView 应该滚动到的位置
             }
 
-            // Update UI with the historyDataList
-            val HistoryAdapter = historyDataList?.let { HistoryAdapter(it) } ?: HistoryAdapter(emptyList())
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // 在此处理开始拖动 SeekBar 的逻辑
+            }
 
-            viewPager.adapter = HistoryAdapter
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 在此处理停止拖动 SeekBar 的逻辑
+            }
+        })
+    }
 
-            seekBar.valueFrom = 0f
-            seekBar.valueTo = (historyDataList?.size?.minus(1) ?: 0).coerceAtLeast(1).toFloat()
-
-            seekBar.stepSize = 1f
-            seekBar.value = 0f
-
-            seekBar.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
-                @SuppressLint("RestrictedApi")
-                override fun onStartTrackingTouch(slider: Slider) {
-                    // Handle touch s tart
-                }
-
-                @SuppressLint("RestrictedApi")
-                override fun onStopTrackingTouch(slider: Slider) {
-                    val progress = slider.value.toInt()
-                    viewPager.setCurrentItem(progress, false)
-                }
-            })
-        }
-
-        return view
+    private fun getSampleData(): List<SleepDuration> {
+        // 获取示例数据，这里假设你有一个 SleepDuration 类来表示每天的睡眠时长
+        // 你可以根据实际需求获取你的睡眠时长数据
+        return listOf(
+            SleepDuration("2024-03-01", 7.5),
+            SleepDuration("2024-03-02", 8.0),
+            SleepDuration("2024-03-03", 7.0),
+            // 添加更多数据...
+        )
     }
 }

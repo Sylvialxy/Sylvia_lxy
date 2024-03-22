@@ -1,5 +1,6 @@
 package com.liuxinyu.dreamscape.ui.today
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.liuxinyu.dreamscape.R
 import com.liuxinyu.dreamscape.data.model.SleepData
 import com.liuxinyu.dreamscape.data.repository.SleepRepository
+import com.yhd.sleepquality.SleepQualityView
 
 
 class TodayFragment : Fragment() {
@@ -35,14 +37,45 @@ class TodayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 初始化 SleepQualityView
+        val sleepView = view.findViewById<SleepQualityView>(R.id.sleepView)
+
+        // 设置数据源
+        val timeArray = listOf(
+            floatArrayOf(1f, 0.0f, 0.05f),
+            floatArrayOf(2f, 0.05f, 0.1f),
+            floatArrayOf(3f, 0.15f, 0.05f),
+            // 添加更多数据...
+        )
+        val xAxisArray = listOf("23", "24", "1", "2", "3", "4", "5", "6", "7")
+        sleepView.setDataSource(timeArray, xAxisArray)
+
+        // 设置Y坐标描述符
+        sleepView.setYAxisString("Wake", "Shallow", "Deep")
+
+
+        // 设置横线的宽度
+        sleepView.setWidthRatio(0.05f)
+
+        // 设置颜色
+        sleepView.setLineColor(
+            Color.parseColor("#10e191"),
+            Color.parseColor("#398eff"),
+            Color.parseColor("#ffa239")
+        )
+
+
+
         tvSleepTime = view.findViewById(R.id.tvSleepTime)
         tvSleepDuration = view.findViewById(R.id.tvSleepDuration)
         tvSleepEfficiency = view.findViewById(R.id.tvSleepEfficiency)
-        barChart = view.findViewById(R.id.barChart)
         pieChart = view.findViewById(R.id.pieChart1)
 
         loadTodayData()
+
     }
+
+
 
     private fun loadTodayData() {
         sleepRepository.getRealtimeData { sleepData ->
@@ -57,25 +90,10 @@ class TodayFragment : Fragment() {
         tvSleepDuration.text = sleepData.sleepDuration.toString()
         tvSleepEfficiency.text = sleepData.sleepEfficiency.toString()
 
-        drawBarChart(sleepData)
         drawPieChart(sleepData)
     }
 
-    private fun drawBarChart(sleepData: SleepData) {
-        val entries = arrayListOf<BarEntry>()
-        entries.add(BarEntry(0f, sleepData.module1.toFloat()))
-        entries.add(BarEntry(1f, sleepData.module2.toFloat()))
-        // 添加其他模块的数据
 
-        val barDataSet = BarDataSet(entries, "Sleep Modules")
-        barDataSet.colors = ColorTemplate.MATERIAL_COLORS.asList()
-
-        val barData = BarData(barDataSet)
-        barChart.data = barData
-
-        // 配置其他 barChart 属性
-        barChart.invalidate()
-    }
 
     private fun drawPieChart(sleepData: SleepData) {
         val entries = arrayListOf<PieEntry>()
