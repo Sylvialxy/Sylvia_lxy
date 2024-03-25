@@ -15,6 +15,7 @@ import com.liuxinyu.dreamscape.R
 import com.liuxinyu.dreamscape.data.model.SleepData
 import com.liuxinyu.dreamscape.data.repository.SleepRepository
 import com.yhd.sleepquality.SleepQualityView
+import java.lang.reflect.Field;
 
 
 class TodayFragment : Fragment() {
@@ -34,11 +35,42 @@ class TodayFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_today, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // 初始化 SleepQualityView
         val sleepView = view.findViewById<SleepQualityView>(R.id.sleepView)
+
+
+
+
+        try {
+            // Get the private textGrayColor field of SleepQualityView class
+            val field: Field = SleepQualityView::class.java.getDeclaredField("textGrayColor")
+            field.isAccessible = true // Set the field accessible
+            val xTextRatioField: Field = SleepQualityView::class.java.getDeclaredField("xTextRatio")
+            val yTextRatioField: Field = SleepQualityView::class.java.getDeclaredField("yTextRatio")
+            xTextRatioField.isAccessible = true // Set the field accessible
+            yTextRatioField.isAccessible = true // Set the field accessible
+
+
+            // Modify textGrayColor field value to white
+            field.setInt(sleepView, Color.WHITE)
+
+            xTextRatioField.setFloat(sleepView, 0.1f)
+            yTextRatioField.setFloat(sleepView, 0.1f)
+
+            // Redraw the view to show the updated color
+            sleepView.invalidate()
+
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        }
+
+
 
         // 设置数据源
         val timeArray = listOf(
@@ -63,6 +95,7 @@ class TodayFragment : Fragment() {
             Color.parseColor("#398eff"),
             Color.parseColor("#ffa239")
         )
+
 
 
 

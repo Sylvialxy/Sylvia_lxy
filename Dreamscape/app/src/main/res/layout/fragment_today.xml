@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/gray"
             android:padding="10dp">
 
 
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
-            android:background="@color/black"
+            android:background="@color/gray"
             android:padding="16dp">
 
             <!-- 在这里添加睡眠脑电波的相关视图，可以使用图表库或自定义绘制，具体根据你的需求来实现 -->
@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 />
 
         </LinearLayout>
